@@ -7,7 +7,7 @@ from base.paginate_response import get_page
 from base.schemas import DefaultResponse
 
 
-FRONTEND_BOOK_WEBHOOK_URL = "http://127.0.0.1:2001/api/frontend/webhook/books"
+FRONTEND_BOOK_WEBHOOK_URL = "http://host.docker.internal:2001/api/frontend/webhook/books"
 
 class BackendLibraryService:
 

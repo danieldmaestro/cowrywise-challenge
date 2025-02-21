@@ -6,8 +6,8 @@ from .models import FrontendLibraryUser, FrontendBook
 from base.paginate_response import get_page
 from base.schemas import DefaultResponse
 
-BACKEND_BOOKS_WEBHOOK_URL = "http://127.0.0.1:2000/api/backend/webhook/books"
-BACKEND_USER_WEBHOOK_URL = "http://127.0.0.1:2000/api/backend/webhook/users"
+BACKEND_BOOKS_WEBHOOK_URL = "http://host.docker.internal:2000/api/backend/webhook/books"
+BACKEND_USER_WEBHOOK_URL = "http://host.docker.internal:2000/api/backend/webhook/users"
 
 class FrontendLibraryService:
 

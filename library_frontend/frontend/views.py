@@ -47,5 +47,5 @@ def borrow_book_from_catalogue(request, book_unique_id: str, payload: BookBorrow
 @router.put("/books/{book_unique_id}/return",
                      response={RESPONSE_CODES: DefaultResponse}, auth=None)
 def return_book_to_catalogue(request, book_unique_id: str, payload: BookReturnSchema):
-    return 200, FrontendLibraryService().borrow_book(book_unique_id, payload)
+    return 200, FrontendLibraryService().return_book(book_unique_id, payload)
 

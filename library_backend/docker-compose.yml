@@ -1,0 +1,32 @@
+volumes:
+  library_backend_db:
+
+services:
+  library_backend_server:
+    env_file:
+      - .env
+    restart: on-failure
+    build:
+      context: .
+    image: library_backend:latest
+    entrypoint: [ "/start_docker.sh" ]
+    command: gunicorn -b 0.0.0.0:8000 --worker-class=gevent --worker-connections=1000 --workers=2 main.wsgi
+    ports:
+      - '2000:8000'
+    volumes:
+      - .:/code
+    depends_on:
+      - library_backend_db
+
+  library_backend_db:
+    image: postgres:16-bookworm
+    container_name: library_backend_db
+    environment:
+      - POSTGRES_USER=backend_user
+      - POSTGRES_PASSWORD=backend_password
+      - POSTGRES_DB=library_backend_db
+    ports:
+        - "7432:5432"
+    volumes:
+        - library_backend_db:/var/lib/postgresql/data
+
